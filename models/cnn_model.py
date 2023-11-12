@@ -57,7 +57,7 @@ class Variant1CNN(nn.Module):
         )
         self.fc_layer = nn.Sequential(
             nn.Dropout(p=0.1),
-            nn.Linear(8 * 8 * 128, 1000),
+            nn.Linear(128 * 16 * 16, 1000),
             nn.ReLU(inplace=True),
             nn.Linear(1000, 512),
             nn.ReLU(inplace=True),
@@ -68,6 +68,7 @@ class Variant1CNN(nn.Module):
     def forward(self, x):
         # conv layers
         x = self.conv_layer(x)
+        #print("Output shape after conv layers:", x.shape)
         # flatten
         x = x.view(x.size(0), -1)
         # fc layer
@@ -90,7 +91,7 @@ class Variant2CNN(nn.Module):
         )
         self.fc_layer = nn.Sequential(
             nn.Dropout(p=0.1),
-            nn.Linear(8 * 8 * 64, 1000),
+            nn.Linear(64 * 16 * 16, 1000),
             nn.ReLU(inplace=True),
             nn.Linear(1000, 512),
             nn.ReLU(inplace=True),
@@ -101,6 +102,7 @@ class Variant2CNN(nn.Module):
     def forward(self, x):
         # conv layers
         x = self.conv_layer(x)
+        #print("Output shape after conv layers:", x.shape)
         # flatten
         x = x.view(x.size(0), -1)
         # fc layer
