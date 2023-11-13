@@ -48,15 +48,15 @@ def train_model(model, train_loader, val_loader, num_epochs, learning_rate):
                 print("Early stopping. No improvement in validation loss for {} epochs.".format(patience))
                 break
 
-def evaluate_model(model, test_loader):
-    model.eval()
-    with torch.no_grad():
-        correct = 0
-        total = 0
-        for images, labels in test_loader:
-            outputs = model(images)
-            _, predicted = torch.max(outputs.data, 1)
-            total += labels.size(0)
-            correct += (predicted == labels).sum().item()
-
-        print('Test Accuracy: {:.2f}%'.format((correct / total) * 100))
+# def evaluate_model(model, test_loader):
+#     model.eval()
+#     with torch.no_grad():
+#         correct = 0
+#         total = 0
+#         for images, labels in test_loader:
+#             outputs = model(images)
+#             _, predicted = torch.max(outputs.data, 1)
+#             total += labels.size(0)
+#             correct += (predicted == labels).sum().item()
+#
+#         print('Test Accuracy: {:.2f}%'.format((correct / total) * 100))

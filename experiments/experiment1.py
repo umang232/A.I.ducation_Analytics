@@ -14,7 +14,7 @@ if __name__ == '__main__':
     # Load data
     train_loader = get_dataloader(root='../Dataset/Training', batch_size=32, train=True)
     val_loader = get_dataloader(root='../Dataset/Training', batch_size=32, train=False)
-    test_loader = get_dataloader(root='../Dataset/Testing', batch_size=1000, train=False)
+    test_loader = get_dataloader(root='../Dataset/Testing', batch_size=32, train=False)
 
     # Experiment 1: Base Architecture
     print("Experiment 1: Base Architecture")
