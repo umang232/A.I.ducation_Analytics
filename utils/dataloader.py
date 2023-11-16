@@ -1,12 +1,14 @@
-from torch.utils.data import DataLoader
-from torchvision.datasets import ImageFolder
 import torchvision.transforms as transforms
-from torch.utils.data import random_split
-
+from torchvision.datasets import ImageFolder
+from torch.utils.data import DataLoader, random_split
 
 def get_dataloader(root, batch_size=32, train=True):
+    # Define the padding size
+    padding_size = 10
+
     transform = transforms.Compose([
         transforms.Resize((64, 64)),
+        transforms.Pad(padding_size),
         transforms.ToTensor(),
         transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))
     ])
