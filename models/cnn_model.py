@@ -73,21 +73,11 @@ class Variant1CNN(nn.Module):
             nn.BatchNorm2d(1024),
             nn.LeakyReLU(inplace=True),
             nn.MaxPool2d(kernel_size=2, stride=2),
-
-            nn.Conv2d(in_channels=1024, out_channels=2048, kernel_size=3, padding=1),
-            nn.BatchNorm2d(2048),
-            nn.LeakyReLU(inplace=True),
-            nn.MaxPool2d(kernel_size=2, stride=2),
-
-            nn.Conv2d(in_channels=2048, out_channels=4096, kernel_size=3, padding=1),
-            nn.BatchNorm2d(4096),
-            nn.LeakyReLU(inplace=True),
-            nn.MaxPool2d(kernel_size=2, stride=2),
         )
 
         self.fc_layer = nn.Sequential(
             nn.Dropout(p=0.1),
-            nn.Linear(4096 * 16 *16, 1000),
+            nn.Linear(1024 * 2 * 2, 1000),
             nn.ReLU(inplace=True),
             nn.Linear(1000, 512),
             nn.ReLU(inplace=True),
