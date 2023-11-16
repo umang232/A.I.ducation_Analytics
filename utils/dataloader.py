@@ -17,14 +17,16 @@ def get_dataloader(root, batch_size=32, train=True):
     # Imagenet standards
     mean = [0.485, 0.456, 0.406]
     std = [0.229, 0.224, 0.225]
+    padding_size = 10
 
     # Train uses data augmentation
     transform = transforms.Compose([
-        transforms.Resize((224, 224)),
+        transforms.Resize((64, 64)),
+        transforms.Pad(padding_size),
         transforms.RandomRotation(10),
         transforms.RandomHorizontalFlip(),
         transforms.ToTensor(),
-        transforms.Normalize(torch.Tensor(mean), torch.Tensor(std))
+        transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))
     ])
 
     dataset = ImageFolder(root=root, transform=transform)

@@ -77,7 +77,7 @@ class Variant1CNN(nn.Module):
 
         self.fc_layer = nn.Sequential(
             nn.Dropout(p=0.1),
-            nn.Linear(1024 * 7 * 7, 1000),
+            nn.Linear(1024 * 2 * 2, 1000),
             nn.ReLU(inplace=True),
             nn.Linear(1000, 512),
             nn.ReLU(inplace=True),
