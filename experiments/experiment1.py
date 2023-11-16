@@ -3,7 +3,8 @@ from models.cnn_model import CNN
 from models.cnn_model import Variant1CNN
 from models.cnn_model import Variant2CNN
 from utils.dataloader import get_dataloader
-from utils.train_eval import train_model, evaluate_model
+from utils.train_eval import train_model
+from utils.evaluation_matrix import evaluate_model
 
 if __name__ == '__main__':
     # Define hyperparameters
@@ -16,12 +17,12 @@ if __name__ == '__main__':
     val_loader = get_dataloader(root='../Dataset/Training', batch_size=32, train=False)
     test_loader = get_dataloader(root='../Dataset/Testing', batch_size=32, train=False)
 
-    # Experiment 1: Base Architecture
-    print("Experiment 1: Base Architecture")
-    model1 = CNN()
-    train_model(model1, train_loader, val_loader, num_epochs, learning_rate)
-    evaluate_model(model1, test_loader)
-    torch.save(model1.state_dict(), '../saved_models/experiment1_model.pth')
+    # # Experiment 1: Base Architecture
+    # print("Experiment 1: Base Architecture")
+    # model1 = CNN()
+    # train_model(model1, train_loader, val_loader, num_epochs, learning_rate)
+    # evaluate_model(model1, test_loader)
+    # torch.save(model1.state_dict(), '../saved_models/experiment1_model.pth')
 
     # Experiment 2: Variant 1 - Vary Number of Convolutional Layers
     print("\nExperiment 2: Variant 1 - Vary Number of Convolutional Layers")
