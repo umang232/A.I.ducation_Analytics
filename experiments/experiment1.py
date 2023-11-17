@@ -8,7 +8,7 @@ from utils.evaluation_matrix import evaluate_model
 
 if __name__ == '__main__':
     # Define hyperparameters
-    num_epochs = 50
+    num_epochs = 100
     num_classes = 4
     learning_rate = 0.001
 
