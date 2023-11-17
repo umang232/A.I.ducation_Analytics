@@ -8,7 +8,7 @@ from utils.evaluation_matrix import evaluate_model
 
 if __name__ == '__main__':
     # Define hyperparameters
-    num_epochs = 10
+    num_epochs = 100
     num_classes = 4
     learning_rate = 0.001
 
@@ -31,9 +31,9 @@ if __name__ == '__main__':
     evaluate_model(model2, test_loader)
     torch.save(model2.state_dict(), '../saved_models/experiment2_model.pth')
 
-    # Experiment 3: Variant 2 - Experiment with Different Kernel Sizes
-    print("\nExperiment 3: Variant 2 - Experiment with Different Kernel Sizes")
-    model3 = Variant2CNN()
-    train_model(model3, train_loader, val_loader, num_epochs, learning_rate)
-    evaluate_model(model3, test_loader)
-    torch.save(model3.state_dict(), '../saved_models/experiment3_model.pth')
+    # # Experiment 3: Variant 2 - Experiment with Different Kernel Sizes
+    # print("\nExperiment 3: Variant 2 - Experiment with Different Kernel Sizes")
+    # model3 = Variant2CNN()
+    # train_model(model3, train_loader, val_loader, num_epochs, learning_rate)
+    # evaluate_model(model3, test_loader)
+    # torch.save(model3.state_dict(), '../saved_models/experiment3_model.pth')

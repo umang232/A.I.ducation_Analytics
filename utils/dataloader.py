@@ -3,7 +3,7 @@ from torchvision.datasets import ImageFolder
 from torch.utils.data import DataLoader, random_split
 import torch
 
-def git git git (root, batch_size=32, train=True):
+def get_dataloader(root, batch_size=32, train=True):
     # Imagenet standards
     mean = [0.485, 0.456, 0.406]
     std = [0.229, 0.224, 0.225]
