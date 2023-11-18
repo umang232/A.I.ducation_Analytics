@@ -7,7 +7,7 @@ def train_model(model, train_loader, val_loader, num_epochs, learning_rate):
 
     # Initialize variables for early stopping
     best_val_loss = float('inf')
-    patience = 10
+    patience = 30
     current_patience = 0
 
     for epoch in range(num_epochs):
