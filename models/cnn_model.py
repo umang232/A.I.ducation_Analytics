@@ -28,22 +28,7 @@ class CNN(nn.Module):
     def forward(self, x):
         # conv layers
         x = self.conv_layer(x)
-        #
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        print("Output shape after conv layers:", x.shape)
+        #print("Output shape after conv layers:", x.shape)
         # flatten
         x = x.view(x.size(0), -1)
         # fc layer
