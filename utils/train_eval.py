@@ -7,7 +7,7 @@ def train_model(model, train_loader, val_loader, num_epochs, learning_rate):
 
     # Initialize variables for early stopping
     best_val_loss = float('inf')
-    patience = 3
+    patience = 30
     current_patience = 0
 
     for epoch in range(num_epochs):
@@ -37,6 +37,7 @@ def train_model(model, train_loader, val_loader, num_epochs, learning_rate):
         average_val_loss = val_loss / len(val_loader)
 
         print('Epoch [{}/{}], Validation Loss: {:.4f}'.format(epoch + 1, num_epochs, average_val_loss))
+        evaluate_model(model, val_loader)
 
         # Check for early stopping
         if average_val_loss < best_val_loss:
@@ -48,15 +49,15 @@ def train_model(model, train_loader, val_loader, num_epochs, learning_rate):
                 print("Early stopping. No improvement in validation loss for {} epochs.".format(patience))
                 break
 
-def evaluate_model(model, test_loader):
+def evaluate_model(model, val_loader):
     model.eval()
     with torch.no_grad():
         correct = 0
         total = 0
-        for images, labels in test_loader:
+        for images, labels in val_loader:
             outputs = model(images)
             _, predicted = torch.max(outputs.data, 1)
             total += labels.size(0)
             correct += (predicted == labels).sum().item()
 
-        print('Test Accuracy: {:.2f}%'.format((correct / total) * 100))
+        print('Validation Accuracy: {:.2f}%'.format((correct / total) * 100))

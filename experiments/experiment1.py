@@ -3,18 +3,19 @@ from models.cnn_model import CNN
 from models.cnn_model import Variant1CNN
 from models.cnn_model import Variant2CNN
 from utils.dataloader import get_dataloader
-from utils.train_eval import train_model, evaluate_model
+from utils.train_eval import train_model
+from utils.evaluation_matrix import evaluate_model
 
 if __name__ == '__main__':
     # Define hyperparameters
-    num_epochs = 10
+    num_epochs = 50
     num_classes = 4
     learning_rate = 0.001
 
     # Load data
     train_loader = get_dataloader(root='../Dataset/Training', batch_size=32, train=True)
     val_loader = get_dataloader(root='../Dataset/Training', batch_size=32, train=False)
-    test_loader = get_dataloader(root='../Dataset/Testing', batch_size=1000, train=False)
+    test_loader = get_dataloader(root='../Dataset/Testing', batch_size=32, train=False)
 
     # Experiment 1: Base Architecture
     print("Experiment 1: Base Architecture")
